@@ -20,7 +20,7 @@ def main():
     print_log("Starting the AI Book Club application")
     st.set_page_config(
         page_title="AI Book Club",
-        page_icon="✨",
+        page_icon="📚",
         layout="wide",
         initial_sidebar_state="expanded",
         menu_items={
@@ -29,7 +29,7 @@ def main():
             "About": "## Let's get insights from book reviews!",
         },
     )
-    st.title("✨ AI Book Club")
+    st.title("📚 AI Book Club")
     st.subheader("Let's get insights from book reviews!", divider=True)
 
     # Session state initialization
@@ -59,7 +59,7 @@ def main():
     print_log(f"User selected author: {author_choice}")
 
     # put options horizontally
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns([3, 4, 3])
     # Model selection
     model_choice = col1.selectbox(
         "Select a model:",
