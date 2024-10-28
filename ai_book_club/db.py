@@ -32,15 +32,15 @@ def check_table_exists(conn, table_name):
     else:
         return False
 
-def init_db(force_reinit=False):
+def init_db(force_reset=False):
     conn = get_db_connection()
     try:
         with conn.cursor() as cur:
-            if force_reinit:
+            if force_reset:
                 cur.execute("DROP TABLE IF EXISTS feedback")
                 cur.execute("DROP TABLE IF EXISTS conversations")
                 if DEBUG:
-                    print('Forced db reinit...')
+                    print('Forced tables reset...')
 
             if not check_table_exists(conn, "conversations"):
                 cur.execute("""

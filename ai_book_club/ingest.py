@@ -18,7 +18,7 @@ DEBUG = True # False
 
 USE_ELASTIC = os.getenv("USE_ELASTIC")
 ELASTIC_URL = os.getenv("ELASTIC_URL")
-ELASTIC_URL_LOCAL = os.getenv("ELASTIC_URL_LOCAL")
+ELASTIC_URL_LOCAL = os.getenv("ELASTIC_URL_LOCAL", "http://localhost:9200")
 # TODO test other model?
 INDEX_MODEL_NAME = os.getenv("INDEX_MODEL_NAME", "multi-qa-MiniLM-L6-cos-v1")
 INDEX_NAME = os.getenv("INDEX_NAME", "book-reviews")

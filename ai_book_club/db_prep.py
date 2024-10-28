@@ -9,5 +9,5 @@ load_dotenv()
 
 if __name__ == "__main__":
     print("Initializing database...")
-    init_db(force_reinit=True)
+    init_db(force_reset=False) # use force_reinit=True to reset tables
     print(" Database initialization finished.")
