@@ -1,4 +1,4 @@
-# LLM project AI 📚 Book Club
+# LLM project 📚 AI Book Club
 
 Pet project / 3rd Capstone project for DataTalks.Club LLM ZoomCamp`24: 
 
@@ -13,9 +13,16 @@ For GitHub CodeSpace option you don't need to use anything extra at all - just y
 
 ## Problem statement
 
-Do you read books? Then you probably know how challenging sometimes can be the process of choosing your next book. Even when when we have all those "Bestsellers lists", best selling doesn't mean it's a right book for you personally...
+Do you read 📖 books? Then you probably know how challenging sometimes can be the process of choosing your next book. Even when when we have all those "Bestsellers lists", best selling doesn't mean it's a right book for you personally...
 
-📖 
+So what can we do to avoid wasting time (and money) on "wrong" books? Wonderful descriptions of Amazon bestsellers quite often are like TV ads - looks great, but... After all, it's their business. It's our responsibility to choose wisely. Read reviews and ask other people. A book club is a great option for that! What is really great on Amazon, is the ability to see ratings and read reviews of other people! And even see "feedback on feedback" - "helpful" votes on review from other readers.
+
+So I decided, why not use AI to answer my questions based on the most useful reviews? 😉
+
+But as we know, all chatgpt's can hallucinate. That's where RAG technology comes in! RAG is Retrieval Augmented Generation - the process of optimizing the output of a large language model (LLM). It references your prepared knowledge base before generating a response. So instead of asking LLM about books "from scratch", RAG based "assistant" first gets context from your knowledge base (collected helpful reviews) and then provides you better focused answers. This is what I use in this project.
+
+Just imagine, you can get insights from sammarized reviews! Without being attacked by Amazon's new offers 😅 Cool! ✨ Welcome to 📚 AI Book Club!
+
 
 ![streamlit check](/screenshots/streamlit-03.png)
 
@@ -23,14 +30,27 @@ Do you read books? Then you probably know how challenging sometimes can be the p
 
 This is my 3rd LLM project started during [LLM ZoomCamp](https://github.com/DataTalksClub/llm-zoomcamp)'24.
 
-LLM project AI 📖 Book Club should assist users in choosing next book to read and getting insights from other readers. It should provide a chatbot-like interface to easily find answers based on book reviews without scrolling through Amazon pages.
+LLM project AI  Book Club should assist users in choosing next book to read and getting insights from other readers. It should provide a chatbot-like interface to easily find answers based on book reviews without scrolling through Amazon pages.
 
 Thanks to LLM ZoomCamp for the reason to keep learning new cool tools! 
 
 
 ## 🔢 Dataset
 
-I parsed bestsellers collections in 4 categories and then used ETL scripts from my previous [Data Engineering project Amazon Reviews](https://github.com/dmytrovoytko/data-engineering-amazon-reviews) to extract the most helpful reviews from [Amazon Reviews'23` dataset](https://amazon-reviews-2023.github.io/). 
+I parsed Amazon bestsellers collections in 4 categories: 
+- Business & Money
+- Health, Fitness & Dieting
+- Science & Math
+- Self-Help
+
+Then I used ETL scripts from my previous [Data Engineering project Amazon Reviews](https://github.com/dmytrovoytko/data-engineering-amazon-reviews) to extract the most helpful reviews from [Amazon Reviews'23` dataset](https://amazon-reviews-2023.github.io/). 
+
+**Structure**: 
+- id, 
+- book metadata: asin, author, title, category, publication_year, 
+- review data: rating, helpful_vote, text.
+
+Some surprises: for some bestsellers reviews with high "helpful" score are... all negative! while a lot of 5-star reviews with no or very low helpful score. Looks like I need to do some 'balancing' in such cases. 
 
 
 ## :toolbox: Tech stack
