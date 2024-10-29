@@ -21,7 +21,7 @@ So I decided, why not use AI to answer my questions based on the most useful rev
 
 But as we know, all chatgpt's can hallucinate. That's where RAG technology comes in! RAG is Retrieval Augmented Generation - the process of optimizing the output of a large language model (LLM). It references your prepared knowledge base before generating a response. So instead of asking LLM about books "from scratch", RAG based "assistant" first gets context from your knowledge base (collected helpful reviews) and then provides you better focused answers. This is what I use in this project.
 
-Just imagine, you can get insights from sammarized reviews! Without being attacked by Amazon's new offers 😅 Cool! ✨ Welcome to 📚 AI Book Club!
+Just imagine, you can get insights from summarized reviews! Without being attacked by Amazon's new offers 😅 Cool! ✨ Welcome to 📚 AI Book Club!
 
 
 ![streamlit check](/screenshots/streamlit-03.png)
@@ -87,12 +87,12 @@ Some surprises: for some bestsellers reviews with high "helpful" score are... al
 5. The app works in docker containers, **you don't need to install packages locally to test it**.
 6. Only if you want to develop the project locally, you can run `pip install -r requirements.txt` (project tested on python 3.11/3.12).
 6. **If you want to use gpt-3.5/gpt-4 API you need to correct OPENAI_API_KEY in `.env` file**, which contains all configuration settings. 
-7. By follwing default instructions (below), scripts will load Ollama/phi3.5 model for processing questions and evaluating results. If you want to use also Ollama/phi3, Ollama/qwen2.5:3b or Ollama/llama3.2:3b uncomment a line in `ollama_pull.sh`. Similarly you can load other Ollama models (you may need to adjust `app.py` for adding them to UI choices).
+7. By following default instructions (below), scripts will load Ollama/phi3.5 model for processing questions and evaluating results. If you want to use also Ollama/phi3, Ollama/qwen2.5:3b or Ollama/llama3.2:3b uncomment a line in `ollama_pull.sh`. Similarly you can load other Ollama models (you may need to adjust `app.py` for adding them to UI choices).
 
 
 ### :arrow_forward: Start the app
 
-1. **Run `bash deploy.sh` to start all containers**, including elasticsearch, ollama, postgres, streamlit, grafana. It takes at least 5 minutes to download/build corresponding images, then get all services ready to serve. So you can make yourself some tea/coffee meanwhile. When new log messages stop appering, press enter to return to a command line.
+1. **Run `bash deploy.sh` to start all containers**, including elasticsearch, ollama, postgres, streamlit, grafana. It takes at least 5 minutes to download/build corresponding images, then get all services ready to serve. So you can make yourself some tea/coffee meanwhile. When new log messages stop appearing, press enter to return to a command line.
 
 ![docker-compose up](/screenshots/docker-compose-00.png)
 
@@ -100,7 +100,7 @@ When you see these messages app is ready
 
 ![docker-compose up](/screenshots/docker-compose-01.png)
 
-2. I put all init scripts to `start_app.sh` which starts automatically in `streamlit` container. Alternatively you can initialize ElasticSearch and PostgreSQL manually by running `bash init_db_es.sh` ("plan B" if something unexpected happens). 
+2. I put all initialization scripts to `start_app.sh` which starts automatically in `streamlit` container. Alternatively you can initialize ElasticSearch and PostgreSQL manually by running `bash init_db_es.sh` ("plan B" if something unexpected happens). 
 
 * to ingest ...
 
