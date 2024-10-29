@@ -1,0 +1,5 @@
+tqdm
+elasticsearch==8.14.0
+sentence-transformers==2.7.0
+# numpy==1.26.4
+# pandas==2.2.2
