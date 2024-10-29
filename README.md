@@ -52,7 +52,7 @@ Then I used ETL scripts from my previous [Data Engineering project Amazon Review
 - book metadata: asin, author, title, category, publication_year, 
 - review data: rating, helpful_vote, text.
 
-Some surprises: for some bestsellers reviews with high "helpful" score are... all negative! while a lot of 5-star reviews with no or very low helpful score. Looks like I need to do some 'balancing' in such cases. 
+Surprises: for some bestsellers reviews with high "helpful" score are... all negative! while a lot of 5-star reviews with no or very low helpful score. Looks like I need to do some 'balancing' in such cases. 
 
 
 ## :toolbox: Tech stack
@@ -102,7 +102,7 @@ When you see these messages app is ready
 
 ![docker-compose up](/screenshots/docker-compose-01.png)
 
-2. I put all initialization scripts to `start_app.sh` which starts automatically in `streamlit` container. Alternatively you can initialize ElasticSearch and PostgreSQL manually by running `bash init_db_es.sh` ("plan B" if something unexpected happens). 
+2. I put all initialization scripts to `start_app.sh` which starts automatically in `streamlit` container. To be honest it was quite challenging to make it wait for services started, looks like it works. Alternatively you can initialize ElasticSearch and PostgreSQL manually by running `bash init_db_es.sh` ("plan B" if something unexpected happens). 
 
 * to ingest ...
 
@@ -190,7 +190,7 @@ Notebooks with text only and vector search retrieval evaluation are in [evaluati
 
 **ElasticSearch**: hit_rate' 0.794, MRR 0.663
 
-2. After tuning boost parameters (for author, title, text) I managed to improve metrics
+2. (Latest experiment) After tuning boost parameters (for author, title, text) I managed to improve metrics
 
 **MinSearch**: hit_rate 0.863, MRR 0.656
 
@@ -202,7 +202,7 @@ Notebooks with text only and vector search retrieval evaluation are in [evaluati
 
 - text_vector_knn: hit_rate 0.663, MRR 0.557
 
-- title_text_vector_knn (author+title+text): hit_rate 0.819, MRR 0.626
+- title_text_vector_knn (author+title+text): **hit_rate 0.819, MRR 0.626**
 
 - vector_combined_knn: hit_rate 0.806, MRR 0.610
 
