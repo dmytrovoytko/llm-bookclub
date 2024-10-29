@@ -15,7 +15,8 @@ echo
 # docker exec -it ollama ollama pull qwen2.5:3b
 
 echo
-echo 'Pulling ollama llama3.2:3b model disabled by default, just uncomment the line below'
+echo 'Pulling ollama llama3.2 model disabled by default, just uncomment the line below'
 echo
+# docker exec -it ollama ollama pull llama3.2:1b
 # docker exec -it ollama ollama pull llama3.2:3b
 
