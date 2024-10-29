@@ -184,7 +184,7 @@ Don't forget to remove downloaded images if you experimented with project locall
 
 Notebooks with text only and vector search retrieval evaluation are in [evaluation](/evaluation) directory.
 
-1. First, I tested min_search and Elastic search for text only:
+1. First, I tested min_search and Elastic search for **Text only**:
 
 **MinSearch**: hit_rate 0.719, MRR 0.503
 
@@ -196,7 +196,7 @@ Notebooks with text only and vector search retrieval evaluation are in [evaluati
 
 **ElasticSearch**: hit_rate' 0.825, MRR 0.72
 
-3. **ElasticSearch** Vector search variations 
+3. ElasticSearch **Vector search** variations 
 
 - title_vector_knn: hit_rate 0.488, MRR 0.253
 
