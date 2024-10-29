@@ -23,6 +23,8 @@ But as we know, all chatgpt's can hallucinate. That's where RAG technology comes
 
 Just imagine, you can get insights from summarized reviews! Without being attacked by Amazon's new offers 😅 Cool! ✨ Welcome to 📚 AI Book Club!
 
+What I really like to achieve by this, is to have different views on books. I had this many times with real people, it's so valuable. Sometimes even motivates me to read parts of the book again as I overlooked something. Can you relate?
+
 
 ![streamlit check](/screenshots/streamlit-03.png)
 
@@ -182,8 +184,33 @@ Don't forget to remove downloaded images if you experimented with project locall
 
 Notebooks with text only and vector search retrieval evaluation are in [evaluation](/evaluation) directory.
 
-- experiment with weights and boost to improve retrieval metrics
+1. First, I tested min_search and Elastic search for text only:
 
+**MinSearch**: hit_rate 0.719, MRR 0.503
+
+**ElasticSearch**: hit_rate' 0.794, MRR 0.663
+
+2. After tuning boost parameters (for author, title, text) I managed to improve metrics
+
+**MinSearch**: hit_rate 0.863, MRR 0.656
+
+**ElasticSearch**: hit_rate' 0.825, MRR 0.72
+
+3. **ElasticSearch** Vector search variations 
+
+- title_vector_knn: hit_rate 0.488, MRR 0.253
+
+- text_vector_knn: hit_rate 0.663, MRR 0.557
+
+- title_text_vector_knn (author+title+text): hit_rate 0.819, MRR 0.626
+
+- vector_combined_knn: hit_rate 0.806, MRR 0.610
+
+I will continue experimenting with weights and boosting.
+
+In `app_rag` I also worked on these retrieval improvements:
+- hybrid search - vector (author+title+text) + text 
+- simplified reranking by filtering search results by author to filter out non-relevant search results without extra LLM call as it's quite slow with Ollama.
 
 ## Best practices
 
@@ -195,6 +222,7 @@ Notebooks with text only and vector search retrieval evaluation are in [evaluati
 
 I plan to:
 - add more book reviews to the dataset, add some more categories
+- balance reviews sentiment
 - keep tuning prompts to improve retrieval quality
 
 Stay tuned!
