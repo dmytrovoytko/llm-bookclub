@@ -75,27 +75,83 @@ I parsed bestsellers collections in 4 categories and then used ETL scripts from 
 
 ![docker-compose up](/screenshots/docker-compose-00.png)
 
+When you see these messages app is ready
+
 ![docker-compose up](/screenshots/docker-compose-01.png)
 
-2. I put all init scripts to `start_app.sh` which starts automatically with streamlit container. You can also initialize ElasticSearch and PostgreSQL manually by running `bash init_db_es.sh`. 
+2. I put all init scripts to `start_app.sh` which starts automatically in `streamlit` container. Alternatively you can initialize ElasticSearch and PostgreSQL manually by running `bash init_db_es.sh`. 
 
-* to ingest and index book reviews database:
+* to ingest ...
+
 ![init_es](/screenshots/init_db_es-00.png)
+
+... and index book reviews database:
+
 ![init_es](/screenshots/init_db_es-01.png)
 
 * to create PostgreSQL tables:
+
 ![init_db](/screenshots/init_db_es-02.png)
 
-* to create Grafana dashboard (monitoring). Alternatively you can run it manually `bash init_gr.sh`:
+* and create Grafana dashboard (monitoring). Alternatively you can run it manually: `bash init_gr.sh`
+
 ![Grafana init_gr](/screenshots/init_gr.png)
 
 3. Default Ollama model (phi3.5) should be pulled automatically. Alternatively you can run `bash ollama_pull.sh` to pull it and other Ollama models:
 
 ![Ollama pull](/screenshots/ollama_pulled.png)
 
-If you want to use other models, you can modify this script accordingly, then update `app.py` to add your model names.
+If you want to use other models, you can modify `ollama_pull.sh` script accordingly, then update `app.py` to add your model names.
 
 4. Finally, open streamlit app: switch to ports tab and click on the link with port 8501 (🌐 icon).
 
 ![Ports streamlit open](/screenshots/streamlit-open.png)
+
+### :speech_balloon: Interact with the app
+
+1. Set query parameters - choose book category and author, then LLM model and query parameters (search type - text/vector/hybrid; response length - small, medium, long). Finally enter your question.
+
+2. Press 'Find the answer' button, wait for the response. For Ollama phi3.5/qwen2.5 in CodeSpace response time was around a minute.
+
+![streamlit Find the answer](/screenshots/streamlit-00.png)
+
+3. RAG evaluation: check relevance evaluated by LLM (default model to use for this is defined in `.env` file).
+
+![streamlit check](/screenshots/streamlit-01.png)
+
+4. Give your feedback by pressing corresponding number of stars 🌟🌟🌟🌟🌟
+- 1-2 are negative
+- 4-5 are positive
+
+![streamlit check](/screenshots/streamlit-02.png)
+
+Both types of evaluation (from LLM and from user) are stored in the database and can be monitored.
+
+5. App starts in the wide mode by default. You can switch it off in streamlit settings (upper right corner).
+
+![streamlit check](/screenshots/streamlit-03.png)
+
+### :bar_chart: Monitoring
+
+You can monitor app performance in Grafana dashboard
+
+1. As mentioned above, dashboard should be created automatically or by running `bash init_gr.sh`.
+
+2. To open Grafana switch to the PORTS tab (as with streamlit) and click on the link with port 3000 (🌐 icon). After loading Grafana use default credentials:
+- Login: "admin"
+- Password: "admin"
+
+3. Click 'Dashboards' in the left pane and choose 'AI Book Club'.
+
+![Grafana dasboard](/screenshots/grafana-00.png)
+
+4. Check out app performance
+
+![Grafana dasboard](/screenshots/grafana-01.png)
+
+### :stop_sign: Stop all containers
+
+Run `docker compose down` in command line to stop all running services.
+
+Don't forget to remove downloaded images if you experimented with project locally! Use `docker images` to list all images and then `docker image rm ...` to remove those you don't need anymore.
 
