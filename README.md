@@ -17,7 +17,7 @@ Do you read books? Then you probably know how challenging sometimes can be the p
 
 📖 
 
-
+![streamlit check](/screenshots/streamlit-03.png)
 
 ## 🎯 Goals
 
@@ -69,6 +69,7 @@ I parsed bestsellers collections in 4 categories and then used ETL scripts from 
 6. **If you want to use gpt-3.5/gpt-4 API you need to correct OPENAI_API_KEY in `.env` file**, which contains all configuration settings. 
 7. By follwing default instructions (below), scripts will load Ollama/phi3.5 model for processing questions and evaluating results. If you want to use also Ollama/phi3, Ollama/qwen2.5:3b or Ollama/llama3.2:3b uncomment a line in `ollama_pull.sh`. Similarly you can load other Ollama models (you may need to adjust `app.py` for adding them to UI choices).
 
+
 ### :arrow_forward: Start the app
 
 1. **Run `bash deploy.sh` to start all containers**, including elasticsearch, ollama, postgres, streamlit, grafana. It takes at least 5 minutes to download/build corresponding images, then get all services ready to serve. So you can make yourself some tea/coffee meanwhile. When new log messages stop appering, press enter to return to a command line.
@@ -107,6 +108,7 @@ If you want to use other models, you can modify `ollama_pull.sh` script accordin
 
 ![Ports streamlit open](/screenshots/streamlit-open.png)
 
+
 ### :speech_balloon: Interact with the app
 
 1. Set query parameters - choose book category and author, then LLM model and query parameters (search type - text/vector/hybrid; response length - small, medium, long). Finally enter your question.
@@ -129,7 +131,6 @@ Both types of evaluation (from LLM and from user) are stored in the database and
 
 5. App starts in the wide mode by default. You can switch it off in streamlit settings (upper right corner).
 
-![streamlit check](/screenshots/streamlit-03.png)
 
 ### :bar_chart: Monitoring
 
@@ -148,6 +149,7 @@ You can monitor app performance in Grafana dashboard
 4. Check out app performance
 
 ![Grafana dasboard](/screenshots/grafana-01.png)
+
 
 ### :stop_sign: Stop all containers
 
